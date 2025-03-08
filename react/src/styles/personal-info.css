@@ -1,0 +1,24 @@
+h1 {
+  font-weight: 500;
+  margin: 0;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-block-end: 0;
+  margin-inline-end: 0;
+  text-align: left;
+}
+
+.Personnal-infos-layout {
+  display: flex;
+  justify-content: center;
+}
+
+.Personnal-infos-container {
+  background-color: white;
+  border-radius: 20px;
+  max-width: 500px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
