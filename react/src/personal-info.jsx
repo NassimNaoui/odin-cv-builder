@@ -1,27 +1,33 @@
 import { Input } from "./components/input";
-import { useState } from "react";
 import "./styles/personal-info.css";
 
 export function PersonalInfos({
+  fullName,
   setFullName,
+  email,
   setEmail,
+  phoneNumber,
   setPhoneNumber,
+  address,
   setAddress,
 }) {
   return (
     <div className="Personnal-infos-layout">
       <div className="Personnal-infos-container">
         <h1>Personnal Details</h1>
-        <ReturnFullName setFullName={setFullName} />
-        <ReturnMail setEmail={setEmail} />
-        <ReturnPhoneNumber setPhoneNumber={setPhoneNumber} />
-        <ReturnAddress setAddress={setAddress} />
+        <ReturnFullName setFullName={setFullName} fullName={fullName} />
+        <ReturnMail setEmail={setEmail} email={email} />
+        <ReturnPhoneNumber
+          setPhoneNumber={setPhoneNumber}
+          phoneNumber={phoneNumber}
+        />
+        <ReturnAddress setAddress={setAddress} address={address} />
       </div>
     </div>
   );
 }
 
-function ReturnFullName({ setFullName }) {
+function ReturnFullName({ fullName, setFullName }) {
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
   };
@@ -32,12 +38,13 @@ function ReturnFullName({ setFullName }) {
       required
       label="Full Name"
       placeholder="First and Last Name"
+      value={fullName}
       onChange={handleFullNameChange}
     />
   );
 }
 
-function ReturnMail({ setEmail }) {
+function ReturnMail({ email, setEmail }) {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -47,12 +54,13 @@ function ReturnMail({ setEmail }) {
       type="email"
       label="Email"
       placeholder="Enter Email"
+      value={email}
       onChange={handleEmailChange}
     />
   );
 }
 
-function ReturnPhoneNumber({ setPhoneNumber }) {
+function ReturnPhoneNumber({ phoneNumber, setPhoneNumber }) {
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
   };
@@ -63,12 +71,13 @@ function ReturnPhoneNumber({ setPhoneNumber }) {
       pattern="[0-9]{10}"
       label="Phone Number"
       placeholder="Enter phone number"
+      value={phoneNumber}
       onChange={handlePhoneNumberChange}
     />
   );
 }
 
-function ReturnAddress({ setAddress }) {
+function ReturnAddress({ address, setAddress }) {
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
   };
@@ -78,6 +87,7 @@ function ReturnAddress({ setAddress }) {
       type="text"
       label="Address"
       placeholder="Enter Address"
+      value={address}
       onChange={handleAddressChange}
     />
   );

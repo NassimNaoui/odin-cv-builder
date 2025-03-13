@@ -17,6 +17,12 @@ body {
   gap: 10px;
 }
 
+.forms-Container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .cv-container {
   flex: 1;
   background-color: white;

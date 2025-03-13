@@ -17,7 +17,7 @@ export function CvModel({ fullName, email, phoneNumber, address }) {
           <div className="phone-number-container">
             <ul>
               <li>
-                <span class="material-symbols-outlined">smartphone</span>
+                <span className="material-symbols-outlined">smartphone</span>
               </li>
               <li>{phoneNumber}</li>
             </ul>
@@ -25,7 +25,7 @@ export function CvModel({ fullName, email, phoneNumber, address }) {
           <div className="address-container">
             <ul>
               <li>
-                <span class="material-symbols-outlined">location_on</span>
+                <span className="material-symbols-outlined">location_on</span>
               </li>
               <li>{address}</li>
             </ul>
