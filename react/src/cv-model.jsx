@@ -1,6 +1,6 @@
 import "./styles/cv-model.css";
 
-export function CvModel({ fullName, email, phoneNumber, address }) {
+export function CvModel({ fullName, email, phoneNumber, address, education }) {
   return (
     <div className="cv-container">
       <div className="cv-header">
@@ -32,7 +32,17 @@ export function CvModel({ fullName, email, phoneNumber, address }) {
           </div>
         </div>
       </div>
-      <div className="cv-body"></div>
+      <div className="cv-body">
+        <div className="education-container">
+          <div className="education-title">EDUCATION</div>
+          <div className="education-body">
+            <ul>
+              <li key={education}>{education}</li>
+            </ul>
+          </div>
+        </div>
+        <div className="experience-container"></div>
+      </div>
     </div>
   );
 }
