@@ -1,6 +1,13 @@
 import "./styles/cv-model.css";
 
-export function CvModel({ fullName, email, phoneNumber, address, education }) {
+export function CvModel({
+  fullName,
+  email,
+  phoneNumber,
+  address,
+  schoolName,
+  degree,
+}) {
   return (
     <div className="cv-container">
       <div className="cv-header">
@@ -33,15 +40,14 @@ export function CvModel({ fullName, email, phoneNumber, address, education }) {
         </div>
       </div>
       <div className="cv-body">
-        <div className="education-container">
-          <div className="education-title">EDUCATION</div>
-          <div className="education-body">
-            <ul>
-              <li key={education}>{education}</li>
-            </ul>
+        <div className="education-experience-container" id="education">
+          <div className="education-experience-title">EDUCATION</div>
+          <div className="education-experience-body">
+            {schoolName}
+            {degree}
           </div>
         </div>
-        <div className="experience-container"></div>
+        <div className="education-experience-container" id="experience"></div>
       </div>
     </div>
   );

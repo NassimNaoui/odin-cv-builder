@@ -1,5 +1,5 @@
 import { Input } from "./components/input";
-import "./styles/personal-info.css";
+import "./styles/input-infos.css";
 
 export function PersonalInfos({
   fullName,
@@ -12,8 +12,8 @@ export function PersonalInfos({
   setAddress,
 }) {
   return (
-    <div className="Personnal-infos-layout">
-      <div className="Personnal-infos-container">
+    <div className="input-infos-layout">
+      <div className="input-infos-container">
         <h1>Personnal Details</h1>
         <ReturnFullName setFullName={setFullName} fullName={fullName} />
         <ReturnMail setEmail={setEmail} email={email} />

@@ -34,6 +34,7 @@ export function EducationApp({
       ) : (
         <EducationSchoolInfos
           schoolName={schoolName}
+          setSchoolName={setSchoolName}
           onClick={() => setEditing(true)}
         />
       )}{" "}
@@ -48,9 +49,11 @@ function EducationSchoolInfos({ schoolName, onClick }) {
         <div className="input-infos-title">
           <h1>Education</h1>
         </div>
-        <div className="education-list">
+        <div className="input-infos-list">
           <ul>
-            <li key={schoolName}>{schoolName}</li>
+            {schoolName.map((schoolName) => (
+              <li key={schoolName}>{schoolName}</li>
+            ))}
           </ul>
         </div>
         <div className="add-education-btn">

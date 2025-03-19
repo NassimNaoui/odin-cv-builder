@@ -11,17 +11,16 @@ export default function App() {
   const [phoneNumber, setPhoneNumber] = useState("+44 3245 5521 5521");
   const [address, setAddress] = useState("New York, USA");
 
-  const education = ["Ifag", "CNAM", "Evariste"];
-
-  function returnEducation() {
-    education.map((school) => <li key={school}>{school}</li>);
-  }
+  const [schoolName, setSchoolName] = useState(["Ifag", "CNAM", "Evariste"]);
+  const [degree, setDegree] = useState(["Master", "Bachelor", "Baccalaureate"]);
 
   const clear = () => {
     setFullName("");
     setEmail("");
     setPhoneNumber("");
     setAddress("");
+    setSchoolName([]);
+    setDegree([]);
   };
 
   const reload = () => {
@@ -29,6 +28,8 @@ export default function App() {
     setEmail("johndoe@thereal.com");
     setPhoneNumber("+44 3245 5521 5521");
     setAddress("New York, USA");
+    setSchoolName(["Ifag", "CNAM", "Evariste"]);
+    setDegree(["Master", "Bachelor", "Baccalaureate"]);
   };
   // const [inputChanged, setInputChanged] = useState(false);
 
@@ -47,15 +48,18 @@ export default function App() {
             address={address}
             setAddress={setAddress}
           />
-          <EducationApp />
+          <EducationApp schoolName={schoolName} setSchoolName={setSchoolName} />
         </div>
         <CvModel
           fullName={fullName}
           email={email}
           phoneNumber={phoneNumber}
           address={address}
-          education={education.map((school) => (
-            <li key={school}>{school}</li>
+          schoolName={schoolName.map((schoolName) => (
+            <li key={schoolName}>{schoolName}</li>
+          ))}
+          degree={degree.map((degree) => (
+            <li key={degree}>{degree}</li>
           ))}
         />
       </div>

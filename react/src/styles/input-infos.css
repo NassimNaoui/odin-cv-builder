@@ -8,12 +8,12 @@ h1 {
   text-align: left;
 }
 
-.Personnal-infos-layout {
+.input-infos-layout {
   display: flex;
   justify-content: center;
 }
 
-.Personnal-infos-container {
+.input-infos-container {
   background-color: white;
   border-radius: 20px;
   max-width: 500px;
@@ -21,4 +21,19 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 25px;
+}
+
+.input-infos-list ul {
+  min-width: 300px;
+  max-width: 300px;
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+  padding: 10px;
+  gap: 10px;
+}
+
+.input-infos-list li {
+  padding: 5px 0px;
+  cursor: pointer;
 }
