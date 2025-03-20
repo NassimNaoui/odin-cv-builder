@@ -62,4 +62,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.education-experience-body {
+  width: 100%;
+}
+
+.education-field {
+  display: flex;
+  gap: 30px;
 }
