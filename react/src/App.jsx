@@ -11,6 +11,9 @@ export default function App() {
   const [phoneNumber, setPhoneNumber] = useState("+44 3245 5521 5521");
   const [address, setAddress] = useState("New York, USA");
 
+  const [schoolName, setSchoolName] = useState(["Ifag", "CNAM", "Evariste"]);
+  const [degree, setDegree] = useState(["Master", "Bachelor", "Baccalaureate"]);
+
   const [education, setEducation] = useState([
     {
       name: "IFAG",
@@ -27,9 +30,6 @@ export default function App() {
       location: "Paris 3",
     },
   ]);
-
-  const [schoolName, setSchoolName] = useState(["Ifag", "CNAM", "Evariste"]);
-  const [degree, setDegree] = useState(["Master", "Bachelor", "Baccalaureate"]);
 
   const clear = () => {
     setFullName("");
@@ -65,7 +65,7 @@ export default function App() {
             address={address}
             setAddress={setAddress}
           />
-          <EducationApp schoolName={schoolName} setSchoolName={setSchoolName} />
+          <EducationApp schoolName={education} setSchoolName={setEducation} />
         </div>
         <CvModel
           fullName={fullName}

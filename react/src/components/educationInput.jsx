@@ -4,22 +4,22 @@ import { Input } from "./input";
 export function EducationInput({
   schoolName,
   setSchoolName,
-  degree,
-  setDegree,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
-  location,
-  setLocation,
+  //   degree,
+  //   setDegree,
+  //   startDate,
+  //   setStartDate,
+  //   endDate,
+  //   setEndDate,
+  //   location,
+  //   setLocation,
 }) {
   return (
     <>
       <ReturnSchoolName setSchoolName={setSchoolName} schoolName={schoolName} />
-      <ReturnDegree setDegree={setDegree} degree={degree} />
+      {/* <ReturnDegree setDegree={setDegree} degree={degree} />
       <ReturnStartDate setStartDate={setStartDate} startDate={startDate} />
       <ReturnEndDate setEndDate={setEndDate} endDate={endDate} />
-      <ReturnLocation setLocation={setLocation} location={location} />
+      <ReturnLocation setLocation={setLocation} location={location} /> */}
     </>
   );
 }
@@ -28,6 +28,12 @@ function ReturnSchoolName({ schoolName, setSchoolName }) {
   const handleSchoolChange = (e) => {
     setSchoolName(e.target.value);
   };
+
+  // function ReturnSchoolName({ education, setEducation, name }) {
+  //     const handleSchoolChange = (e) => {
+  //         setEducation({...education, name : e.target.value})
+  //     }
+  //   };
 
   return (
     <Input
