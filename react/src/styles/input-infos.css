@@ -37,3 +37,13 @@ h1 {
   padding: 5px 0px;
   cursor: pointer;
 }
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-container .subform-container input {
+  min-width: 130px;
+  max-width: 130px;
+}

@@ -2,36 +2,25 @@ import { useState } from "react";
 import { EducationInput } from "./components/educationInput";
 // import "./styles/personal-info.css";
 
-export function EducationApp({
-  schoolName,
-  setSchoolName,
-  //   degree,
-  //   setDegree,
-  //   startDate,
-  //   setStartDate,
-  //   endDate,
-  //   setEndDate,
-  //   location,
-  //   setLocation,
-}) {
+export function EducationApp({ education, setEducation }) {
   const [isEditing, setEditing] = useState(false);
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
 
   function returnSelectedSchoolObject(selectedSchool) {
-    return schoolName.find(({ name }) => name === selectedSchool);
+    return education.find(({ name }) => name === selectedSchool);
   }
 
   if (!isAdding && !isEditing) {
     return (
       <>
         <EducationSchoolInfos
-          schoolName={schoolName}
-          setSchoolName={setSchoolName}
+          education={education}
+          setEducation={setEducation}
           onClickAdd={() => setAdding(true)}
-          onClickOpen={(schoolName) => {
+          onClickOpen={(education) => {
             setEditing(true);
-            setSelectedSchool(schoolName);
+            setSelectedSchool(education);
           }}
         />
       </>
@@ -40,8 +29,8 @@ export function EducationApp({
     return (
       <>
         <EducationInputForms
-          schoolName={""}
-          setSchoolName={setSchoolName}
+          education={""}
+          setEducation={setEducation}
           //   degree={degree}
           //   setDegree={setDegree}
           //   startDate={startDate}
@@ -60,16 +49,16 @@ export function EducationApp({
       <>
         <EducationInputForms
           schoolName={returnSelectedSchoolObject(selectedSchool).name}
-          setSchoolName={setSchoolName}
-          //   degree={degree}
-          //   setDegree={setDegree}
-          //   startDate={startDate}
-          //   setStartDate={setStartDate}
-          //   endDate={endDate}
-          //   setEndDate={setEndDate}
-          //   location={location}
-          //   setLocation={setLocation}
-          //   onClose={() => setAdding(false)}
+          setSchoolName={setEducation}
+          degree={returnSelectedSchoolObject(selectedSchool).degree}
+          setDegree={setEducation}
+          startDate={returnSelectedSchoolObject(selectedSchool).startDate}
+          setStartDate={setEducation}
+          endDate={returnSelectedSchoolObject(selectedSchool).endDate}
+          setEndDate={setEducation}
+          location={returnSelectedSchoolObject(selectedSchool).location}
+          setLocation={setEducation}
+          onClose={() => setAdding(false)}
           onClick={() => setEditing(false)}
         />
       </>
@@ -77,7 +66,7 @@ export function EducationApp({
   }
 }
 
-function EducationSchoolInfos({ schoolName, onClickAdd, onClickOpen }) {
+function EducationSchoolInfos({ education, onClickAdd, onClickOpen }) {
   return (
     <div className="input-infos-layout">
       <div className="input-infos-container">
@@ -86,7 +75,7 @@ function EducationSchoolInfos({ schoolName, onClickAdd, onClickOpen }) {
         </div>
         <div className="input-infos-list">
           <ul>
-            {schoolName.map((school) => (
+            {education.map((school) => (
               <li key={school.name} onClick={() => onClickOpen(school.name)}>
                 {school.name}
               </li>
@@ -104,14 +93,14 @@ function EducationSchoolInfos({ schoolName, onClickAdd, onClickOpen }) {
 function EducationInputForms({
   schoolName,
   setSchoolName,
-  //   degree,
-  //   setDegree,
-  //   startDate,
-  //   setStartDate,
-  //   endDate,
-  //   setEndDate,
-  //   location,
-  //   setLocation,
+  degree,
+  setDegree,
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  location,
+  setLocation,
   onClick,
 }) {
   return (
@@ -123,14 +112,14 @@ function EducationInputForms({
         <EducationInput
           schoolName={schoolName}
           setSchoolName={setSchoolName}
-          //   setDegree={setDegree}
-          //   degree={degree}
-          //   setStartDate={setStartDate}
-          //   startDate={startDate}
-          //   setEndDate={setEndDate}
-          //   endDate={endDate}
-          //   setLocation={setLocation}
-          //   location={location}
+          degree={degree}
+          setDegree={setDegree}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          endDate={endDate}
+          setLocation={setLocation}
+          location={location}
         />
         <div className="education-btn-container">
           <button>Delete</button>

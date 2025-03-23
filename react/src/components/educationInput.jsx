@@ -4,22 +4,24 @@ import { Input } from "./input";
 export function EducationInput({
   schoolName,
   setSchoolName,
-  //   degree,
-  //   setDegree,
-  //   startDate,
-  //   setStartDate,
-  //   endDate,
-  //   setEndDate,
-  //   location,
-  //   setLocation,
+  degree,
+  setDegree,
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  location,
+  setLocation,
 }) {
   return (
     <>
-      <ReturnSchoolName setSchoolName={setSchoolName} schoolName={schoolName} />
-      {/* <ReturnDegree setDegree={setDegree} degree={degree} />
-      <ReturnStartDate setStartDate={setStartDate} startDate={startDate} />
-      <ReturnEndDate setEndDate={setEndDate} endDate={endDate} />
-      <ReturnLocation setLocation={setLocation} location={location} /> */}
+      <ReturnSchoolName schoolName={schoolName} setSchoolName={setSchoolName} />
+      <ReturnDegree degree={degree} setDegree={setDegree} />
+      <div className="date-container">
+        <ReturnStartDate startdate={startDate} setStartDate={setStartDate} />
+        <ReturnEndDate endDate={endDate} setEndDate={setEndDate} />
+      </div>
+      <ReturnLocation location={location} setLocation={setLocation} />
     </>
   );
 }
@@ -64,7 +66,7 @@ function ReturnDegree({ degree, setDegree }) {
   );
 }
 
-function ReturnStartDate({ startDate, setStartDate }) {
+function ReturnStartDate({ startdate, setStartDate }) {
   const handleStartDate = (e) => {
     setStartDate(e.target.value);
   };
@@ -75,7 +77,7 @@ function ReturnStartDate({ startDate, setStartDate }) {
       required
       label="Start Date"
       placeholder="Enter Start date"
-      value={startDate}
+      value={startdate}
       onChange={handleStartDate}
     />
   );

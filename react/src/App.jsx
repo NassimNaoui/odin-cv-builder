@@ -65,7 +65,7 @@ export default function App() {
             address={address}
             setAddress={setAddress}
           />
-          <EducationApp schoolName={education} setSchoolName={setEducation} />
+          <EducationApp education={education} setEducation={setEducation} />
         </div>
         <CvModel
           fullName={fullName}
