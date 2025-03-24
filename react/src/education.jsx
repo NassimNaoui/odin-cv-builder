@@ -2,22 +2,25 @@ import { useState } from "react";
 import { EducationInput } from "./components/educationInput";
 // import "./styles/personal-info.css";
 
-export function EducationApp({ education, setEducation }) {
+export function EducationApp({ education, handleChange, addSchool }) {
   const [isEditing, setEditing] = useState(false);
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
 
-  function returnSelectedSchoolObject(selectedSchool) {
-    return education.find(({ name }) => name === selectedSchool);
-  }
+  console.log(isAdding);
 
   if (!isAdding && !isEditing) {
     return (
       <>
         <EducationSchoolInfos
           education={education}
-          setEducation={setEducation}
-          onClickAdd={() => setAdding(true)}
+          handleChange={handleChange}
+          onClickAdd={() => {
+            console.log("addSchool est appelé !");
+            addSchool();
+            setAdding(true);
+            console.log(education);
+          }}
           onClickOpen={(education) => {
             setEditing(true);
             setSelectedSchool(education);
@@ -30,7 +33,7 @@ export function EducationApp({ education, setEducation }) {
       <>
         <EducationInputForms
           education={""}
-          setEducation={setEducation}
+          handleChange={handleChange}
           //   degree={degree}
           //   setDegree={setDegree}
           //   startDate={startDate}
@@ -48,16 +51,8 @@ export function EducationApp({ education, setEducation }) {
     return (
       <>
         <EducationInputForms
-          schoolName={returnSelectedSchoolObject(selectedSchool).name}
-          setSchoolName={setEducation}
-          degree={returnSelectedSchoolObject(selectedSchool).degree}
-          setDegree={setEducation}
-          startDate={returnSelectedSchoolObject(selectedSchool).startDate}
-          setStartDate={setEducation}
-          endDate={returnSelectedSchoolObject(selectedSchool).endDate}
-          setEndDate={setEducation}
-          location={returnSelectedSchoolObject(selectedSchool).location}
-          setLocation={setEducation}
+          school={education.find(({ id }) => id === selectedSchool)}
+          handleChange={handleChange}
           onClose={() => setAdding(false)}
           onClick={() => setEditing(false)}
         />
@@ -76,7 +71,7 @@ function EducationSchoolInfos({ education, onClickAdd, onClickOpen }) {
         <div className="input-infos-list">
           <ul>
             {education.map((school) => (
-              <li key={school.name} onClick={() => onClickOpen(school.name)}>
+              <li key={school.id} onClick={() => onClickOpen(school.id)}>
                 {school.name}
               </li>
             ))}
@@ -90,37 +85,14 @@ function EducationSchoolInfos({ education, onClickAdd, onClickOpen }) {
   );
 }
 
-function EducationInputForms({
-  schoolName,
-  setSchoolName,
-  degree,
-  setDegree,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
-  location,
-  setLocation,
-  onClick,
-}) {
+function EducationInputForms({ school, handleChange, onClick }) {
   return (
     <div className="input-infos-layout">
       <div className="input-infos-container">
         <div className="input-infos-title">
           <h1>Education</h1>
         </div>
-        <EducationInput
-          schoolName={schoolName}
-          setSchoolName={setSchoolName}
-          degree={degree}
-          setDegree={setDegree}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-          endDate={endDate}
-          setLocation={setLocation}
-          location={location}
-        />
+        <EducationInput school={school} handleChange={handleChange} />
         <div className="education-btn-container">
           <button>Delete</button>
           <button onClick={onClick}>Cancel</button>

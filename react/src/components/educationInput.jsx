@@ -1,118 +1,91 @@
 import { Input } from "./input";
 // import "./styles/personal-info.css";
 
-export function EducationInput({
-  schoolName,
-  setSchoolName,
-  degree,
-  setDegree,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
-  location,
-  setLocation,
-}) {
+export function EducationInput({ school, handleChange }) {
   return (
     <>
-      <ReturnSchoolName schoolName={schoolName} setSchoolName={setSchoolName} />
-      <ReturnDegree degree={degree} setDegree={setDegree} />
+      <ReturnSchoolName school={school} handleChange={handleChange} />
+      <ReturnDegree school={school} handleChange={handleChange} />
       <div className="date-container">
-        <ReturnStartDate startdate={startDate} setStartDate={setStartDate} />
-        <ReturnEndDate endDate={endDate} setEndDate={setEndDate} />
+        <ReturnStartDate school={school} handleChange={handleChange} />
+        <ReturnEndDate school={school} handleChange={handleChange} />
       </div>
-      <ReturnLocation location={location} setLocation={setLocation} />
+      <ReturnLocation school={school} handleChange={handleChange} />
     </>
   );
 }
 
-function ReturnSchoolName({ schoolName, setSchoolName }) {
-  const handleSchoolChange = (e) => {
-    setSchoolName(e.target.value);
-  };
-
-  // function ReturnSchoolName({ education, setEducation, name }) {
-  //     const handleSchoolChange = (e) => {
-  //         setEducation({...education, name : e.target.value})
-  //     }
-  //   };
-
+function ReturnSchoolName({ school, handleChange }) {
   return (
     <Input
       type="text"
       required
       label="School"
       placeholder="Enter school / university"
-      value={schoolName}
-      onChange={handleSchoolChange}
+      value={school?.name}
+      onChange={(e) => {
+        handleChange(school?.id, "name", e.target.value);
+      }}
     />
   );
 }
 
-function ReturnDegree({ degree, setDegree }) {
-  const handleDegre = (e) => {
-    setDegree(e.target.value);
-  };
-
+function ReturnDegree({ school, handleChange }) {
   return (
     <Input
       type="text"
       required
       label="Degree"
       placeholder="Enter degree / field of study"
-      value={degree}
-      onChange={handleDegre}
+      value={school?.degree}
+      onChange={(e) => {
+        handleChange(school?.id, "degree", e.target.value);
+      }}
     />
   );
 }
 
-function ReturnStartDate({ startdate, setStartDate }) {
-  const handleStartDate = (e) => {
-    setStartDate(e.target.value);
-  };
-
+function ReturnStartDate({ school, handleChange }) {
   return (
     <Input
       type="text"
       required
       label="Start Date"
       placeholder="Enter Start date"
-      value={startdate}
-      onChange={handleStartDate}
+      value={school?.startDate}
+      onChange={(e) => {
+        handleChange(school?.id, "startDate", e.target.value);
+      }}
     />
   );
 }
 
-function ReturnEndDate({ endDate, setEndDate }) {
-  const handleEndDate = (e) => {
-    setEndDate(e.target.value);
-  };
-
+function ReturnEndDate({ school, handleChange }) {
   return (
     <Input
       type="text"
       required
       label="End Date"
       placeholder="Enter End date"
-      value={endDate}
-      onChange={handleEndDate}
+      value={school?.endDate}
+      onChange={(e) => {
+        handleChange(school?.id, "endDate", e.target.value);
+      }}
     />
   );
 }
 
-function ReturnLocation({ location, setLocation }) {
-  const handleLocation = (e) => {
-    setLocation(e.target.value);
-  };
-
+function ReturnLocation({ school, handleChange }) {
   return (
     <Input
       type="text"
       required
       label="Location"
       placeholder="Enter Location"
-      value={location}
-      onChange={handleLocation}
+      value={school?.location}
+      onChange={(e) => {
+        handleChange(school?.id, "location", e.target.value);
+      }}
     />
   );
 }

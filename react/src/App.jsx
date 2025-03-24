@@ -10,12 +10,9 @@ export default function App() {
   const [email, setEmail] = useState("johndoe@thereal.com");
   const [phoneNumber, setPhoneNumber] = useState("+44 3245 5521 5521");
   const [address, setAddress] = useState("New York, USA");
-
-  const [schoolName, setSchoolName] = useState(["Ifag", "CNAM", "Evariste"]);
-  const [degree, setDegree] = useState(["Master", "Bachelor", "Baccalaureate"]);
-
   const [education, setEducation] = useState([
     {
+      id: 1,
       name: "IFAG",
       degree: "Master",
       startDate: "09/2016",
@@ -23,6 +20,7 @@ export default function App() {
       location: "Boulogne",
     },
     {
+      id: 2,
       name: "CNAM",
       degree: "Bachelor",
       startDate: "09/2013",
@@ -31,13 +29,31 @@ export default function App() {
     },
   ]);
 
+  const handleChange = (id, field, value) => {
+    setEducation((prevEducation) => {
+      const updated = prevEducation.map((school) =>
+        school.id === id ? { ...school, [field]: value } : school
+      );
+      return updated;
+    });
+  };
+
+  const addSchool = () => {
+    console.log("Avant setEducation :", education);
+    setEducation((prev) => {
+      const newEducation = [...prev, { id: Date.now(), name: "", degree: "" }];
+      console.log("Nouvel état education :", newEducation);
+      return newEducation;
+    });
+    console.log("Après setEducation :", education);
+  };
+
   const clear = () => {
     setFullName("");
     setEmail("");
     setPhoneNumber("");
     setAddress("");
-    setSchoolName([]);
-    setDegree([]);
+    setEducation([]);
   };
 
   const reload = () => {
@@ -45,8 +61,24 @@ export default function App() {
     setEmail("johndoe@thereal.com");
     setPhoneNumber("+44 3245 5521 5521");
     setAddress("New York, USA");
-    setSchoolName(["Ifag", "CNAM", "Evariste"]);
-    setDegree(["Master", "Bachelor", "Baccalaureate"]);
+    setEducation([
+      {
+        id: 1,
+        name: "IFAG",
+        degree: "Master",
+        startDate: "09/2016",
+        endDate: "09/2018",
+        location: "Boulogne",
+      },
+      {
+        id: 2,
+        name: "CNAM",
+        degree: "Bachelor",
+        startDate: "09/2013",
+        endDate: "09/2016",
+        location: "Paris 3",
+      },
+    ]);
   };
   // const [inputChanged, setInputChanged] = useState(false);
 
@@ -65,7 +97,11 @@ export default function App() {
             address={address}
             setAddress={setAddress}
           />
-          <EducationApp education={education} setEducation={setEducation} />
+          <EducationApp
+            education={education}
+            handleChange={handleChange}
+            addSchool={addSchool}
+          />
         </div>
         <CvModel
           fullName={fullName}
