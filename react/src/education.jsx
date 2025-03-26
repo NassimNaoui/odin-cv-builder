@@ -2,12 +2,17 @@ import { useState } from "react";
 import { EducationInput } from "./components/educationInput";
 // import "./styles/personal-info.css";
 
-export function EducationApp({ education, handleChange, addSchool }) {
-  const [isEditing, setEditing] = useState(false);
+export function EducationApp({
+  education,
+  handleChange,
+  addSchool,
+  dropSchool,
+  upDateBackUp,
+  getBackup,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
-
-  console.log(isAdding);
 
   if (!isAdding && !isEditing) {
     return (
@@ -16,13 +21,10 @@ export function EducationApp({ education, handleChange, addSchool }) {
           education={education}
           handleChange={handleChange}
           onClickAdd={() => {
-            console.log("addSchool est appelé !");
-            addSchool();
-            setAdding(true);
-            console.log(education);
+            addSchool(), setAdding(true);
           }}
           onClickOpen={(education) => {
-            setEditing(true);
+            setIsEditing(true);
             setSelectedSchool(education);
           }}
         />
@@ -32,18 +34,19 @@ export function EducationApp({ education, handleChange, addSchool }) {
     return (
       <>
         <EducationInputForms
-          education={""}
+          school={education[education.length - 1]}
           handleChange={handleChange}
-          //   degree={degree}
-          //   setDegree={setDegree}
-          //   startDate={startDate}
-          //   setStartDate={setStartDate}
-          //   endDate={endDate}
-          //   setEndDate={setEndDate}
-          //   location={location}
-          //   setLocation={setLocation}
-          //   onClose={() => setAdding(false)}
-          onClick={() => setAdding(false)}
+          onClickCancel={() => {
+            getBackup(), setIsEditing(false), setAdding(false);
+          }}
+          onClickDelete={() => {
+            dropSchool(education.length - 1),
+              setIsEditing(false),
+              setAdding(false);
+          }}
+          onClickSave={() => {
+            upDateBackUp(), setIsEditing(false), setAdding(false);
+          }}
         />
       </>
     );
@@ -53,8 +56,20 @@ export function EducationApp({ education, handleChange, addSchool }) {
         <EducationInputForms
           school={education.find(({ id }) => id === selectedSchool)}
           handleChange={handleChange}
-          onClose={() => setAdding(false)}
-          onClick={() => setEditing(false)}
+          onClickCancel={() => {
+            getBackup(), setIsEditing(false);
+          }}
+          onClickDelete={() => {
+            dropSchool(
+              education.indexOf(
+                education.find((element) => element.id === selectedSchool)
+              )
+            ),
+              setIsEditing(false);
+          }}
+          onClickSave={() => {
+            upDateBackUp(), setIsEditing(false);
+          }}
         />
       </>
     );
@@ -85,7 +100,13 @@ function EducationSchoolInfos({ education, onClickAdd, onClickOpen }) {
   );
 }
 
-function EducationInputForms({ school, handleChange, onClick }) {
+function EducationInputForms({
+  school,
+  handleChange,
+  onClickCancel,
+  onClickDelete,
+  onClickSave,
+}) {
   return (
     <div className="input-infos-layout">
       <div className="input-infos-container">
@@ -94,9 +115,9 @@ function EducationInputForms({ school, handleChange, onClick }) {
         </div>
         <EducationInput school={school} handleChange={handleChange} />
         <div className="education-btn-container">
-          <button>Delete</button>
-          <button onClick={onClick}>Cancel</button>
-          <button>Save</button>
+          <button onClick={onClickDelete}>Delete</button>
+          <button onClick={onClickCancel}>Cancel</button>
+          <button onClick={onClickSave}>Save</button>
         </div>
       </div>
     </div>

@@ -4,8 +4,13 @@ import { CvModel } from "./cv-model";
 import { useState } from "react";
 import { EducationApp } from "./education";
 import "./styles/App.css";
+import { use } from "react";
 
 export default function App() {
+  const handleChangeEditing = (state) => {
+    return state ? setIsEditing(true) : setIsEditing(false);
+  };
+
   const [fullName, setFullName] = useState("John Doe");
   const [email, setEmail] = useState("johndoe@thereal.com");
   const [phoneNumber, setPhoneNumber] = useState("+44 3245 5521 5521");
@@ -29,6 +34,8 @@ export default function App() {
     },
   ]);
 
+  const [educationBackUp, setEducationBackUp] = useState(education);
+
   const handleChange = (id, field, value) => {
     setEducation((prevEducation) => {
       const updated = prevEducation.map((school) =>
@@ -39,13 +46,25 @@ export default function App() {
   };
 
   const addSchool = () => {
-    console.log("Avant setEducation :", education);
     setEducation((prev) => {
       const newEducation = [...prev, { id: Date.now(), name: "", degree: "" }];
-      console.log("Nouvel état education :", newEducation);
       return newEducation;
     });
-    console.log("Après setEducation :", education);
+  };
+
+  const dropSchool = (index) => {
+    setEducation((prev) => {
+      const newEducation = [...prev.slice(0, index), ...prev.slice(index + 1)];
+      return newEducation;
+    });
+  };
+
+  const upDateBackUp = () => {
+    setEducationBackUp(education);
+  };
+
+  const getBackup = () => {
+    setEducation(educationBackUp);
   };
 
   const clear = () => {
@@ -80,7 +99,6 @@ export default function App() {
       },
     ]);
   };
-  // const [inputChanged, setInputChanged] = useState(false);
 
   return (
     <>
@@ -101,6 +119,9 @@ export default function App() {
             education={education}
             handleChange={handleChange}
             addSchool={addSchool}
+            dropSchool={dropSchool}
+            upDateBackUp={upDateBackUp}
+            getBackup={getBackup}
           />
         </div>
         <CvModel
