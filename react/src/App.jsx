@@ -13,24 +13,24 @@ export default function App() {
 
   const [fullName, setFullName] = useState("John Doe");
   const [email, setEmail] = useState("johndoe@thereal.com");
-  const [phoneNumber, setPhoneNumber] = useState("+44 3245 5521 5521");
+  const [phoneNumber, setPhoneNumber] = useState("+1 3245 5521 5521");
   const [address, setAddress] = useState("New York, USA");
   const [education, setEducation] = useState([
     {
       id: 1,
-      name: "IFAG",
-      degree: "Master",
+      name: "Harvard university",
+      degree: "Master in computer science",
       startDate: "09/2016",
       endDate: "09/2018",
-      location: "Boulogne",
+      location: "Cambridge",
     },
     {
       id: 2,
-      name: "CNAM",
-      degree: "Bachelor",
+      name: "Massachusetts Institue of Technology",
+      degree: "Bachelor in computer science",
       startDate: "09/2013",
       endDate: "09/2016",
-      location: "Paris 3",
+      location: "Cambridge",
     },
   ]);
 
@@ -78,24 +78,24 @@ export default function App() {
   const reload = () => {
     setFullName("John Doe");
     setEmail("johndoe@thereal.com");
-    setPhoneNumber("+44 3245 5521 5521");
+    setPhoneNumber("+1 3245 5521 5521");
     setAddress("New York, USA");
     setEducation([
       {
         id: 1,
-        name: "IFAG",
+        name: "Harvard university",
         degree: "Master",
         startDate: "09/2016",
         endDate: "09/2018",
-        location: "Boulogne",
+        location: "Cambridge",
       },
       {
         id: 2,
-        name: "CNAM",
+        name: "Massachusetts Institue of Technology",
         degree: "Bachelor",
         startDate: "09/2013",
         endDate: "09/2016",
-        location: "Paris 3",
+        location: "Cambridge",
       },
     ]);
   };
@@ -130,7 +130,7 @@ export default function App() {
           phoneNumber={phoneNumber}
           address={address}
           schoolName={education.map((school) => (
-            <div className="education-field">
+            <div className="education-experience-field">
               <div className="date-location">
                 <div id="date">
                   {school.startDate} {school.endDate}

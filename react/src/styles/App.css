@@ -7,14 +7,17 @@
 body {
   margin: 10;
   padding: 10;
+  width: 100vw;
   font-family: var(--main-font);
   background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 25px;
 }
 
 .forms-Container {
@@ -26,4 +29,10 @@ body {
 .cv-container {
   flex: 1;
   background-color: white;
+}
+
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
 }

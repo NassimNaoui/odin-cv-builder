@@ -47,3 +47,69 @@ h1 {
   min-width: 130px;
   max-width: 130px;
 }
+
+.add-education-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-education-btn button {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.education-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete-action,
+.cancel-action,
+.save-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  padding: 2px 9px;
+  cursor: pointer;
+}
+
+.delete-action button,
+.cancel-action button,
+.save-action button {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  cursor: pointer;
+}
+
+.delete-action .material-symbols-outlined,
+.cancel-action .material-symbols-outlined,
+.save-action .material-symbols-outlined {
+  line-height: normal;
+}
+
+.delete-action {
+  background-color: #fe5e5b;
+  color: white;
+}
+
+.save-action {
+  background-color: #0d9b27;
+  color: white;
+}
+
+.cancel-action {
+  border: 1px solid #0d9b27;
+  color: #0d9b27;
+}
+
+.cancel-action button {
+  color: #0d9b27;
+}

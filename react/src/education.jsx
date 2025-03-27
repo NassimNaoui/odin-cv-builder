@@ -14,6 +14,8 @@ export function EducationApp({
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
 
+  console.log(education);
+
   if (!isAdding && !isEditing) {
     return (
       <>
@@ -115,9 +117,18 @@ function EducationInputForms({
         </div>
         <EducationInput school={school} handleChange={handleChange} />
         <div className="education-btn-container">
-          <button onClick={onClickDelete}>Delete</button>
-          <button onClick={onClickCancel}>Cancel</button>
-          <button onClick={onClickSave}>Save</button>
+          <div className="delete-action">
+            <span class="material-symbols-outlined">delete</span>
+            <button onClick={onClickDelete}>Delete</button>
+          </div>
+          <div className="cancel-action">
+            <span class="material-symbols-outlined">close</span>
+            <button onClick={onClickCancel}>Cancel</button>
+          </div>
+          <div className="save-action">
+            <span class="material-symbols-outlined">save</span>
+            <button onClick={onClickSave}>Save</button>
+          </div>
         </div>
       </div>
     </div>

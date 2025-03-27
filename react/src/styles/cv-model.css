@@ -2,6 +2,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  min-width: 500px;
+  max-width: 700px;
+  max-height: 800px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .cv-container h1 {
   margin: 0;
@@ -15,11 +19,12 @@
 
 .cv-header {
   /*flex: 1;*/
-  background-color: beige;
+  background-color: #0e374e;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  color: white;
 }
 
 .personal-infos-container {
@@ -63,13 +68,35 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 10px;
+}
+
+.education-experience-title {
+  width: 100%;
+  background-color: #f1f2f4;
+  color: #0e374e;
+  text-align: center;
+  font-weight: 600;
+  padding: 7px;
 }
 
 .education-experience-body {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.education-field {
+.education-experience-field {
   display: flex;
   gap: 30px;
+  align-items: center;
+}
+
+#school {
+  font-weight: 600;
+}
+
+#date {
+  font-size: 0.8em;
 }
