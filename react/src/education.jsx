@@ -14,8 +14,6 @@ export function EducationApp({
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
 
-  console.log(education);
-
   if (!isAdding && !isEditing) {
     return (
       <>

@@ -7,6 +7,7 @@ export function CvModel({
   address,
   schoolName,
   degree,
+  experience,
 }) {
   return (
     <div className="cv-container">
@@ -47,7 +48,10 @@ export function CvModel({
             {degree}
           </div>
         </div>
-        <div className="education-experience-container" id="experience"></div>
+        <div className="education-experience-container" id="experience">
+          <div className="education-experience-title">EXPERIENCE</div>
+          {experience}
+        </div>
       </div>
     </div>
   );
