@@ -24,7 +24,8 @@ h4 {
   padding-left: 10px;
 }
 
-input {
+input,
+textarea {
   outline: none;
   border-radius: 8px;
   padding: 10px;
@@ -32,6 +33,7 @@ input {
   background-color: #f3f4f6;
   min-width: 300px;
   max-width: 300px;
+  font-family: poppins;
 }
 
 input:focus {

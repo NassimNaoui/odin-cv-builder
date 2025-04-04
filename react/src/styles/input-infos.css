@@ -113,3 +113,8 @@ h1 {
 .cancel-action button {
   color: #0d9b27;
 }
+
+.input-form-Description {
+  height: 100px;
+  overflow-wrap: break-all;
+}

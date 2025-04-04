@@ -24,3 +24,17 @@ export function Input({
     </div>
   );
 }
+
+export function TextArea({ label, placeholder, value, onChange }) {
+  return (
+    <div className="subform-container">
+      <h4 className={`title-${label}`}>{label}</h4>
+      <textarea
+        className={`input-form-${label}`}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    </div>
+  );
+}

@@ -59,6 +59,8 @@ export default function App() {
     },
   ]);
 
+  const [experienceBackup, setexperienceBackup] = useState(experience);
+
   const handleChange = (id, field, value) => {
     setEducation((prevEducation) => {
       const updated = prevEducation.map((school) =>
@@ -172,6 +174,8 @@ export default function App() {
           <ExperienceApp
             experience={experience}
             setexperience={setexperience}
+            experienceBackup={experienceBackup}
+            setexperienceBackup={setexperienceBackup}
           />
         </div>
         <CvModel
