@@ -13,6 +13,7 @@ export function EducationApp({
   const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setAdding] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState();
+  const [isOpen, setisOpen] = useState(false);
 
   if (!isAdding && !isEditing) {
     return (
@@ -27,6 +28,8 @@ export function EducationApp({
             setIsEditing(true);
             setSelectedSchool(education);
           }}
+          // isOpen={isOpen}
+          // onClickRotate={setisOpen(true)}
         />
       </>
     );
@@ -77,11 +80,22 @@ export function EducationApp({
 }
 
 function EducationSchoolInfos({ education, onClickAdd, onClickOpen }) {
+  const [animate, setAnimate] = useState(false);
+
+  const handleClick = () => {
+    setAnimate(true);
+  };
+
+  console.log(animate);
+
   return (
     <div className="input-infos-layout">
       <div className="input-infos-container">
         <div className="input-infos-title">
           <h1>Education</h1>
+          <button onclick={handleClick}>
+            <span class={"material-symbols-outlined"}>keyboard_arrow_down</span>
+          </button>
         </div>
         <div className="input-infos-list">
           <ul>

@@ -23,6 +23,21 @@ h1 {
   gap: 25px;
 }
 
+.input-infos-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+.material-symbols-outlined.animate {
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
 .input-infos-list ul {
   min-width: 300px;
   max-width: 300px;

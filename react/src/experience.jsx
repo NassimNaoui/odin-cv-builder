@@ -102,6 +102,7 @@ function CardExperience({ experience, onClickOpen, onClickAdd }) {
       <div className="input-infos-container">
         <div className="input-infos-title">
           <h1>Experience</h1>
+          <span class="material-symbols-outlined">keyboard_arrow_down</span>
         </div>
         <div className="input-infos-list">
           <ul>
